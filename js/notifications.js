@@ -39,7 +39,7 @@ export function showToast(message, type = 'info') {
   }
   container.appendChild(toast);
 
-  // ✅ Play subtle audio feedback depending on type
+  // Playing subtle audio feedback depending on type
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     const oscillator = ctx.createOscillator();
@@ -51,7 +51,7 @@ export function showToast(message, type = 'info') {
     switch (type) {
       case 'success':
         oscillator.type = 'sine';
-        oscillator.frequency.setValueAtTime(880, ctx.currentTime); // A5 note
+        oscillator.frequency.setValueAtTime(880, ctx.currentTime); 
         gainNode.gain.setValueAtTime(0.2, ctx.currentTime);
         oscillator.start();
         oscillator.stop(ctx.currentTime + 0.25);
@@ -59,7 +59,7 @@ export function showToast(message, type = 'info') {
 
       case 'error':
         oscillator.type = 'square';
-        oscillator.frequency.setValueAtTime(220, ctx.currentTime); // low buzz
+        oscillator.frequency.setValueAtTime(220, ctx.currentTime); 
         gainNode.gain.setValueAtTime(0.25, ctx.currentTime);
         oscillator.start();
         oscillator.stop(ctx.currentTime + 0.4);
@@ -67,7 +67,7 @@ export function showToast(message, type = 'info') {
 
       case 'info':
         oscillator.type = 'triangle';
-        oscillator.frequency.setValueAtTime(440, ctx.currentTime); // neutral tone
+        oscillator.frequency.setValueAtTime(440, ctx.currentTime); 
         gainNode.gain.setValueAtTime(0.15, ctx.currentTime);
         oscillator.start();
         oscillator.stop(ctx.currentTime + 0.2);
@@ -77,17 +77,17 @@ export function showToast(message, type = 'info') {
     console.warn('Audio play blocked:', err);
   }
 
-  // ✅ Gentle vibration for mobile devices
+  //  Gentle vibration for mobile devices
   if (navigator.vibrate) {
     switch (type) {
       case 'success':
-        navigator.vibrate(50); // short tap
+        navigator.vibrate(50); 
         break;
       case 'error':
-        navigator.vibrate([100, 50, 100]); // double buzz
+        navigator.vibrate([100, 50, 100]); 
         break;
       case 'info':
-        navigator.vibrate(30); // quick pulse
+        navigator.vibrate(30); 
         break;
     }
   }
@@ -104,61 +104,3 @@ export function showToast(message, type = 'info') {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
-// js/notifications.js
-import { state, saveState } from './state.js';
-
-// Request notification permission
-export async function requestNotificationPermission() {
-  if ('Notification' in window) {
-    const permission = await Notification.requestPermission();
-    if (permission === 'granted') {
-      state.notificationsEnabled = true;
-      sendNotification('Notifications Enabled!', 'You will now receive reminders for trash duty.');
-      saveState();
-    } else {
-      showToast('Notification permission denied. Enable in browser settings.', 'error');
-    }
-  } else {
-    showToast('Your browser does not support notifications.', 'error');
-  }
-}
-
-// Send browser notification
-export function sendNotification(title, body) {
-  if (state.notificationsEnabled && 'Notification' in window && Notification.permission === 'granted') {
-    new Notification(title, {
-      body: body,
-      icon: '/icons/trash.png' // replace with a real icon file
-    });
-  }
-}
-
-// Toast helper
-export function showToast(message, type = 'info') {
-  const toast = document.createElement('div');
-  toast.className = `
-    fixed bottom-4 right-4 px-4 py-2 rounded shadow-lg
-    ${type === 'error' ? 'bg-red-500' : type === 'success' ? 'bg-green-500' : 'bg-gray-800'}
-    text-white text-sm font-medium
-  `;
-  toast.textContent = message;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
-}
-**/
