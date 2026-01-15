@@ -1,0 +1,248 @@
+/* Toast base styles */
+.toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  min-width: 220px;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* When toast is active */
+.toast.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Toast types with animated fade */
+.toast-success {
+  background-color: #10b981; /* Tailwind green-500 */
+  color: #fff;
+  animation: successPulse 3s ease-in-out infinite;
+}
+
+.toast-info {
+  background-color: #3b82f6; /* Tailwind blue-500 */
+  color: #fff;
+  animation: infoPulse 3s ease-in-out infinite;
+}
+
+.toast-error {
+  background-color: #ef4444; /* Tailwind red-500 */
+  color: #fff;
+  animation: errorPulse 3s ease-in-out infinite;
+}
+
+/* Fade-out animation */
+.toast.fade-out {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Allow stacking multiple toasts */
+.toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Custom scrollbar for history */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* Tailwind gray-300 */
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; /* Tailwind gray-400 */
+}
+
+/* Fade-in utility (used for confirmation panel) */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Color pulse animations */
+@keyframes successPulse {
+  0%, 100% { background-color: #10b981; } /* green-500 */
+  50% { background-color: #34d399; } /* green-400 */
+}
+
+@keyframes infoPulse {
+  0%, 100% { background-color: #3b82f6; } /* blue-500 */
+  50% { background-color: #60a5fa; } /* blue-400 */
+}
+
+@keyframes errorPulse {
+  0%, 100% { background-color: #ef4444; } /* red-500 */
+  50% { background-color: #f87171; } /* red-400 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+/* Toast base styles /
+.toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  min-width: 220px;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* When toast is active /
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Toast types /
+.toast-success {
+  background-color: #10b981; /* Tailwind green-500 /
+  color: #fff;
+}
+
+.toast-info {
+  background-color: #3b82f6; /* Tailwind blue-500 /
+  color: #fff;
+}
+
+.toast-error {
+  background-color: #ef4444; /* Tailwind red-500 /
+  color: #fff;
+}
+
+/* Fade-out animation /
+.toast.fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Allow stacking multiple toasts /
+.toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Custom scrollbar for history /
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* Tailwind gray-300 /
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; /* Tailwind gray-400 /
+}
+
+/* Fade-in utility (used for confirmation panel) /
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+/**
+
+.toast {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Custom scrollbar for history /
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* Tailwind gray-300 /
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; /* Tailwind gray-400 /
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+
+
+/* Optional: override Tailwind defaults if needed */
